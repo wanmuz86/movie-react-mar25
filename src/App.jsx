@@ -19,12 +19,15 @@ function App() {
     setMovies(response.data.Search) // THe list of movies is inside Search key, we pass th Search key down
     
   }
+  const retrieveimdbId =  (imdbID) => {
+  alert( `Succesfully retrieved ${imdbID} from App.jsx`)
+  }
 
   return (
     <>
       <Header/>
       <Search handleUserSearch={callApi}/>
-      <MovieList movieProps={movies}/>
+      <MovieList movieProps={movies} handleSelect={retrieveimdbId}/>
       <MovieDetail/>
       <Footer/>
     </>

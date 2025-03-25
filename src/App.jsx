@@ -29,7 +29,7 @@ function App() {
       <Header/>
       <Search handleUserSearch={callApi}/>
       <MovieList movieProps={movies} handleSelect={retrieveimdbId}/>
-      {selectedMovie != null ? <MovieDetail/> : ""} 
+      {selectedMovie != null ? <MovieDetail omdbId={selectedMovie}/> : ""} 
       <Footer/>
     </>
   )

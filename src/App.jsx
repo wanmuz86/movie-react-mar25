@@ -11,6 +11,7 @@ import axios from 'axios'
 function App() {
 
   const [movies, setMovies] = useState([])
+  const [selectedMovie, setSelectedMovie]  = useState(null)
  
   const callApi = async (movieSearch) => {
     const response = await 
@@ -20,7 +21,7 @@ function App() {
     
   }
   const retrieveimdbId =  (imdbID) => {
-  alert( `Succesfully retrieved ${imdbID} from App.jsx`)
+    setSelectedMovie(imdbID)
   }
 
   return (
@@ -28,7 +29,7 @@ function App() {
       <Header/>
       <Search handleUserSearch={callApi}/>
       <MovieList movieProps={movies} handleSelect={retrieveimdbId}/>
-      <MovieDetail/>
+      {selectedMovie != null ? <MovieDetail/> : ""} 
       <Footer/>
     </>
   )

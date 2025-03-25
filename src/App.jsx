@@ -14,11 +14,20 @@ function App() {
   const [selectedMovie, setSelectedMovie]  = useState(null)
  
   const callApi = async (movieSearch) => {
+    try {
     const response = await 
     axios.get(`https://www.omdbapi.com/?s=${movieSearch}&apikey=87d10179`)
     console.log(response.data)
+    if (response.data.Response === "True"){
     setMovies(response.data.Search) // THe list of movies is inside Search key, we pass th Search key down
-    
+    }
+    else {
+      alert(response.data.Error)
+    }  
+  }
+    catch (error){
+      console.log(error)
+    }
   }
   const retrieveimdbId =  (imdbID) => {
     setSelectedMovie(imdbID)

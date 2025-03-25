@@ -1,4 +1,5 @@
 
+import {  useState } from 'react'
 import './App.css'
 import Footer from './components/Footer'
 import Header from './components/Header'
@@ -9,11 +10,13 @@ import axios from 'axios'
 
 function App() {
 
+  const [movies, setMovies] = useState([])
  
-
   const callApi = async (movieSearch) => {
-    const response = await axios.get(`https://www.omdbapi.com/?s=${movieSearch}&apikey=87d10179`)
+    const response = await 
+    axios.get(`https://www.omdbapi.com/?s=${movieSearch}&apikey=87d10179`)
     console.log(response.data)
+    setMovies(response.data.Search) // THe list of movies is inside Search key, we pass th Search key down
     
   }
 
@@ -21,7 +24,7 @@ function App() {
     <>
       <Header/>
       <Search handleUserSearch={callApi}/>
-      <MovieList/>
+      <MovieList movieProps={movies}/>
       <MovieDetail/>
       <Footer/>
     </>

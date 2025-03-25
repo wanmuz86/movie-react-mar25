@@ -1,8 +1,12 @@
 import React from 'react'
 
-const MovieList = () => {
+const MovieList = ({movieProps}) => {
   return (
-    <div>MovieList</div>
+    <div>
+        {
+            movieProps.map((movie)=> <p key={movie.imdbID}>{movie.Title}</p>)
+        }
+    </div>
   )
 }
 
